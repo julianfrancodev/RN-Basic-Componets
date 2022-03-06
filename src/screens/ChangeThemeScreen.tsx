@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { TouchableOpacity, View, Text } from 'react-native';
 import HeaderTittle from '../components/HeaderTittle';
 import { styles } from '../theme/appTheme';
+import { ThemeContext } from '../context/theme/ThemeContext';
 
 interface Props {}
 
 function ChangeThemeScreen(props: Props) {
-    const {} = props
+    const {} = props;
+
+
+    const {setDarkTheme} = useContext(ThemeContext)
 
     return (
         <View style={styles.globalMargin}>
             <HeaderTittle title='Theme'/>
 
             <TouchableOpacity
+            onPress={()=> setDarkTheme()}
             activeOpacity={0.8}
             style={{
                 backgroundColor: '#5856d6', 
