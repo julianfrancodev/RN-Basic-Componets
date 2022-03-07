@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { TextInput, View, StyleSheet, Text, KeyboardAvoidingView, Platform, Keyboard } from 'react-native';
 import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import CustomSwitch from '../components/CustomSwitch';
 import HeaderTittle from '../components/HeaderTittle';
 import { useForm } from '../hooks/useForm';
+import { ThemeContext } from '../context/theme/ThemeContext';
 
 interface Props { }
 
 function TextInputScreen(props: Props) {
     const { } = props;
+
+
+    const {theme} = useContext(ThemeContext);
 
     const {onChange, form} = useForm({
         name: '',
@@ -29,27 +33,31 @@ function TextInputScreen(props: Props) {
                         <HeaderTittle title='TextInputs' />
 
                         <TextInput
-                            style={styles.inputStyle}
+                            style={{...styles.inputStyle, borderColor: theme.colors.text, color: theme.colors.text}}
                             placeholder="Ingrese su nombre"
                             autoCorrect={false}
                             autoCapitalize='words'
                             onChangeText={(value) => onChange(value, 'name')}
+                            placeholderTextColor={theme.colors.text}
                         />
 
                         <TextInput
-                            style={styles.inputStyle}
+                            style={{...styles.inputStyle, borderColor: theme.colors.text, color: theme.colors.text}}
                             placeholder="Ingrese su email"
                             autoCorrect={false}
                             autoCapitalize='none'
                             onChangeText={(value) => onChange(value, 'email')}
                             keyboardType="email-address"
+                            placeholderTextColor={theme.colors.text}
+
 
                         />
                         <TextInput
-                            style={styles.inputStyle}
+                            style={{...styles.inputStyle, borderColor: theme.colors.text, color: theme.colors.text}}
                             placeholder="ingrese su telefono"
                             onChangeText={(value) => onChange(value, 'phone')}
                             keyboardType="phone-pad"
+                            placeholderTextColor={theme.colors.text}
 
                         />
 

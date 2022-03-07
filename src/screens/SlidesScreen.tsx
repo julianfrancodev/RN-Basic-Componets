@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Dimensions, Image, ImageSourcePropType, SafeAreaView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { ThemeContext } from '../context/theme/ThemeContext';
 
 interface Props { }
 
@@ -35,6 +36,8 @@ function SlidesScreen(props: Props) {
 
     const [activeIndex, setActiveIndex] = useState(0);
 
+    const {theme} = useContext(ThemeContext);
+
     const { } = props
 
 
@@ -44,7 +47,7 @@ function SlidesScreen(props: Props) {
             <View
                 style={{
                     flex: 1,
-                    backgroundColor: 'white',
+                    backgroundColor: theme.colors.background,
                     borderRadius: 5,
                     padding: 40,
                     justifyContent: 'center'
@@ -58,10 +61,10 @@ function SlidesScreen(props: Props) {
                         resizeMode: 'center'
                     }}
                 />
-                <Text style={styles.title}>
+                <Text style={{...styles.title, color: theme.colors.text}}>
                     {item.title}
                 </Text>
-                <Text style={styles.subtitle}>
+                <Text style={{...styles.title, color: theme.colors.text}}>
                     {item.desc}
                 </Text>
             </View>

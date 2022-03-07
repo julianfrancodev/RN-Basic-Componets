@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Switch } from 'react-native-gesture-handler';
 import { Platform, StyleSheet } from 'react-native';
+import { ThemeContext } from '../context/theme/ThemeContext';
 
 interface Props {
     isOn: boolean,
@@ -8,6 +9,8 @@ interface Props {
 }
 
 function CustomSwitch(props: Props) {
+
+    const {theme} = useContext(ThemeContext);
 
     const { isOn, onChangeSwitch } = props;
 
@@ -22,7 +25,7 @@ function CustomSwitch(props: Props) {
 
     return (
         <Switch
-            trackColor={{ false: "#d9d9db", true: "#5856d6" }}
+            trackColor={{ false: "#d9d9db", true: theme.colors.primary }}
             thumbColor={(Platform.OS === 'android') ? '#5856d6' : ''}
             ios_backgroundColor="#3e3e3e"
             onValueChange={toggleSwitch}

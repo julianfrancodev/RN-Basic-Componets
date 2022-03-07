@@ -18,14 +18,7 @@ function App(props: Props) {
 
   return (
     <AppState>
-
-    <NavigationContainer
-      // theme={customTheme}
-    >
       <Navigator/>
-
-    </NavigationContainer>
-
     </AppState>
 
   )

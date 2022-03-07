@@ -11,19 +11,13 @@ interface Props { }
 
 function HomeScreen(props: Props) {
 
-
     const { } = props
-
-
 
     const renderListHeader = () => {
         return (
            <HeaderTittle title='Opciones del menu'/>
         )
     }
-
-
- 
 
     return (
         <View style={{ flex: 1, ...styles.globalMargin }}>

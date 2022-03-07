@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Platform, View, Text, StyleSheet } from 'react-native';
 import { Switch } from 'react-native-gesture-handler';
 import CustomSwitch from '../components/CustomSwitch';
 import HeaderTittle from '../components/HeaderTittle';
+import { ThemeContext } from '../context/theme/ThemeContext';
 
 interface Props {
 }
 
 function SwitchScreen(props: Props) {
     const {} = props;
+
+
+    const {theme} = useContext(ThemeContext);
 
     const [state, setstate] = useState({
         isActive: false,
@@ -37,7 +41,7 @@ function SwitchScreen(props: Props) {
 
             </View>
 
-            <Text style={styles.switchText}>
+            <Text style={{...styles.switchText, color: theme.colors.text}}>
                 {JSON.stringify(state, null, 5)}
             </Text>
             

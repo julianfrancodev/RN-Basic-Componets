@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ScrollView, View, RefreshControl, Text } from 'react-native';
 import HeaderTittle from '../components/HeaderTittle';
 import { styles } from '../theme/appTheme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ThemeContext } from '../context/theme/ThemeContext';
 
 interface Props {}
 
 function PullToRefreshScreen(props: Props) {
     const {} = props;
+
+    const {theme} = useContext(ThemeContext);
 
     const [refreshing, setrefreshing] = useState(false);
     const [data, setdata] = useState<string>();
@@ -36,7 +39,7 @@ function PullToRefreshScreen(props: Props) {
             <View style={styles.globalMargin}>
                 <HeaderTittle title='Pull To Refresh'/>
 
-                <Text>
+                <Text style={{color: theme.colors.text}}>
                     {data}
                 </Text>
             </View>
